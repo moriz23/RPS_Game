@@ -13,45 +13,53 @@ $(document).ready(function() {
   $("a").on("click", function() {
     userChoice = this.id;
     computerChoice = computerOptions[Math.floor(Math.random() * computerOptions.length)];
-    console.log(userChoice, computerChoice);
+    console.log(userChoice);
     if(userChoice === computerChoice) {
-        alert("TIE");
+       $(".icons").fadeOut(500);
+       $(userChoice).show;
       } 
 
         else if (userChoice === "Rock" && computerChoice === "Scissors") {
-        alert("YOU WIN");
+        $(".icons").fadeOut(500);
+        $(userChoice).fadeIn(500);
         userScore++;
         $(".userScore").html(userScore);
 
       } else if (userChoice === "Rock" && computerChoice === "Paper") {
-        alert("YOU LOST");
+        $(".icons").fadeOut(500);
+        $(userChoice).fadeIn(500);
         computerScore++;
         $(".computerScore").html(computerScore);
       } 
 
         else if (userChoice === "Paper" && computerChoice === "Scissors") {
-        alert("YOU LOST");
+        $(".icons").fadeOut(500);
+        $(userChoice).fadeIn(500);
         computerScore++;
         $(".computerScore").html(computerScore);
 
       } else if (userChoice === "Paper" && computerChoice === "Rock") {
-        alert("YOU WIN");
+        $(".icons").fadeOut(500);
+        $(userChoice).fadeIn(500);
         userScore++;
         $(".userScore").html(userScore);
 
       } 
         else if (userChoice === "Scissors" && computerChoice === "Rock") {
-        alert("YOU LOST");
+        $(".icons").fadeOut(500);
+        $(userChoice).fadeIn(500);
         computerScore++;
         $(".computerScore").html(computerScore);
+
       } else if (userChoice === "Scissors" && computerChoice === "Paper") {
-        alert("YOU WIN");
+        $(".icons").fadeOut(500);
+        $(userChoice).fadeIn(500);
         userScore++;
         $(".userScore").html(userScore);
       }
       roundCounter++;
       $(".round").html(roundCounter);
-      console.log(userChoice, computerChoice);
+      console.log(userChoice);
       
   });
 });
