@@ -10,56 +10,65 @@ $(document).ready(function() {
     "Scissors"
   ]
 
+  $("h2").hide();
+  $("h1").hide();
+  $(".icons").hide();
+
+  $("button").on("click", function() {
+    $("h2").fadeIn(500);
+    $("h1").fadeIn(500);
+    $(".icons").show();
+    $("button").hide();
+  });
+
+  $("a").hover(function () {
+  $(this).addClass("pulse");
+});
+
+
   $("a").on("click", function() {
     userChoice = this.id;
     computerChoice = computerOptions[Math.floor(Math.random() * computerOptions.length)];
-    console.log(userChoice);
+    console.log(userChoice, computerChoice);
     if(userChoice === computerChoice) {
-       $(".icons").fadeOut(500);
-       $(userChoice).show;
+        alert("TIE");
       } 
 
         else if (userChoice === "Rock" && computerChoice === "Scissors") {
-        $(".icons").fadeOut(500);
-        $(userChoice).fadeIn(500);
+        alert("YOU WIN");
         userScore++;
         $(".userScore").html(userScore);
 
       } else if (userChoice === "Rock" && computerChoice === "Paper") {
-        $(".icons").fadeOut(500);
-        $(userChoice).fadeIn(500);
+        alert("YOU LOST");
         computerScore++;
         $(".computerScore").html(computerScore);
       } 
 
         else if (userChoice === "Paper" && computerChoice === "Scissors") {
-        $(".icons").fadeOut(500);
-        $(userChoice).fadeIn(500);
+        alert("YOU LOST");
         computerScore++;
         $(".computerScore").html(computerScore);
 
       } else if (userChoice === "Paper" && computerChoice === "Rock") {
-        $(".icons").fadeOut(500);
-        $(userChoice).fadeIn(500);
+        alert("YOU WIN");
         userScore++;
         $(".userScore").html(userScore);
 
       } 
         else if (userChoice === "Scissors" && computerChoice === "Rock") {
-        $(".icons").fadeOut(500);
-        $(userChoice).fadeIn(500);
+        alert("YOU LOST");
         computerScore++;
         $(".computerScore").html(computerScore);
 
       } else if (userChoice === "Scissors" && computerChoice === "Paper") {
-        $(".icons").fadeOut(500);
-        $(userChoice).fadeIn(500);
+        alert("YOU WIN");
         userScore++;
         $(".userScore").html(userScore);
       }
       roundCounter++;
       $(".round").html(roundCounter);
-      console.log(userChoice);
+      console.log(userChoice, computerChoice);
       
   });
 });
