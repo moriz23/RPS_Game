@@ -22,3 +22,13 @@ h1 {
   font-size: 200px;
   color: #00FF36;
 }
+
+#yo {
+  width: 100%;
+}
+
+.btn-default {
+  margin-left: 700px;
+  margin-top: 250px;
+  background-color: #00FF36; 
+}
