@@ -13,12 +13,15 @@ $(document).ready(function() {
   $("h2").hide();
   $("h1").hide();
   $(".icons").hide();
+  $(".btn-info").hide();
+
 
   $("button").on("click", function() {
     $("h2").fadeIn(500);
     $("h1").fadeIn(500);
+    $(".btn-info").fadeIn(500);
     $(".icons").show();
-    $("button").hide();
+    $(".btn-default").hide();
   });
 
   $("a").hover(function () {
@@ -28,13 +31,14 @@ $(document).ready(function() {
   $("a").on("click", function() {
     userChoice = this.id;
     computerChoice = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+     if (roundCounter <= 5){
+    roundCounter++;
+        $(".round").html(roundCounter);
     if(userChoice === computerChoice) {
         $("h4").html("TIE GAME: You chose " + userChoice + " and Computer chose " + computerChoice);
         $("p").html("<img id='yo' src='http://www.reactiongifs.com/r/2013/02/tied.gif'>");
         $("#myModal").modal("show");
         gameOver();
-        roundCounter++;
-        $(".round").html(roundCounter);
       } 
 
         else if (userChoice === "Rock" && computerChoice === "Scissors") {
@@ -43,8 +47,6 @@ $(document).ready(function() {
         $("#myModal").modal("show");
         gameOver();
         userScore++;
-        roundCounter++;
-        $(".round").html(roundCounter);
         $(".userScore").html(userScore);
 
       } else if (userChoice === "Rock" && computerChoice === "Paper") {
@@ -53,8 +55,6 @@ $(document).ready(function() {
         $("#myModal").modal("show");
         gameOver();
         computerScore++;
-        roundCounter++;
-        $(".round").html(roundCounter);
         $(".computerScore").html(computerScore);
       } 
 
@@ -64,8 +64,6 @@ $(document).ready(function() {
         $("#myModal").modal("show");
         gameOver();
         computerScore++;
-        roundCounter++;
-        $(".round").html(roundCounter);
         $(".computerScore").html(computerScore);
 
       } else if (userChoice === "Paper" && computerChoice === "Rock") {
@@ -74,19 +72,14 @@ $(document).ready(function() {
         $("#myModal").modal("show");
         gameOver();
         userScore++;
-        roundCounter++;
-        $(".round").html(roundCounter);
         $(".userScore").html(userScore);
 
-      } 
-        else if (userChoice === "Scissors" && computerChoice === "Rock") {
+      } else if (userChoice === "Scissors" && computerChoice === "Rock") {
         $("h4").html("FAILED! COMPUTER WON: You chose " + userChoice + " and Computer chose " + computerChoice);
         $("p").html("<img id='yo' src='http://45.media.tumblr.com/tumblr_ltwddhOT1T1qfetl0o1_500.gif'>");
         $("#myModal").modal("show");
         gameOver();
         computerScore++;
-        roundCounter++;
-        $(".round").html(roundCounter);
         $(".computerScore").html(computerScore);
 
       } else if (userChoice === "Scissors" && computerChoice === "Paper") {
@@ -95,34 +88,36 @@ $(document).ready(function() {
         $("#myModal").modal("show");
         gameOver();
         userScore++;
-        roundCounter++;
-        $(".round").html(roundCounter);
         $(".userScore").html(userScore);
       }
+      }
 
-    
-      
       console.log(userChoice, computerChoice);
       
   });
-  function gameOver() {
+      function gameOver() {
         if (roundCounter === 6 && userScore > computerScore) {
+            $("a").off();
         $("h4").html("CONGRATS YOU WON THE MOST ROUNDS");
         $("p").html("<img id='yo' src='https://media.giphy.com/media/iXmF48FlrGuTS/giphy.gif'>");
         $("#myModal").modal("show");
 
       } else if (roundCounter === 6 && computerScore > userScore) {
+          $("a").off();
         $("h4").html("SERIOUSLY? THE COMPUTER WON MORE ROUNDS THAN YOU?");
         $("p").html("<img id='yo' src='http://i.imgur.com/1HWQIPa.gif'>");
         $("#myModal").modal("show");
       
       } else if (roundCounter === 6 && computerScore === userScore) {
+          $("a").off();
         $("h4").html("YOU CAN KEEP SAYING THAT TO YOURSELF, BUT IT IS A TIE");
         $("p").html("<img id='yo' src='https://jessrunshappy.files.wordpress.com/2014/05/be-positive.gif'>");
         $("#myModal").modal("show");
       }
 
       } 
+
+
 
   
 });
